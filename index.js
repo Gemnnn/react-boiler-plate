@@ -31,7 +31,8 @@ app.post('/register', async (req, res) => {
             success: true
         });
     } catch (err) {
-        return res.json({ success: false, err });
+        console.error(err);
+        return res.status(500).json({ success: false, err });
     }
 });
 
