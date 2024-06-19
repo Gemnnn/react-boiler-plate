@@ -3,6 +3,9 @@ const app = express();
 const port = 5000;
 
 const bodyParser = require('body-parser');
+
+const config = require('./config/key');
+
 const { User } = require('./models/User');
 
 // application/x-www-form-urlencoded
@@ -12,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://brandenmin:kYw2Bg3Q0YAA5DA7@boilerplate.yzomgli.mongodb.net/')
+mongoose.connect(config.mongoURI)
     .then(() => console.log('MongoDB Connected....'))
     .catch(err => console.log(err));
 
