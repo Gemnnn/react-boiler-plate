@@ -85,6 +85,29 @@ userSchema.methods.generateToken = function(){
     return user.save().then(user => user);
 };
 
+userSchema.statics.findByToken = async function(token) {
+    var user = this;
+
+
+
+    // jwt.verify(token, 'secretToken', function(err, decoded){
+    //     user.findOne({"_id": decoded, "token": token}, function (err, user){
+    //         if(err){
+    //             return cb(err);
+    //         }
+    //         cb(null, user);
+    //     })
+    // });
+
+    try {
+        const decoded = jwt.verify(token, 'secretToken');
+        const foundUser = await user.findOne({ "_id": decoded, "token": token }).exec();
+        return foundUser;
+    } catch (err) {
+        throw err;
+    }
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = { User };
