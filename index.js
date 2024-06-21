@@ -4,10 +4,10 @@ const port = 5000;
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const config = require('./config/key');
+const config = require('./server/config/key');
 
-const { User } = require('./models/User');
-const { auth } = require('./middleware/auth');
+const { User } = require('./server/models/User');
+const { auth } = require('./server/middleware/auth');
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
