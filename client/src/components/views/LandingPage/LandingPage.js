@@ -2,7 +2,9 @@ import React from 'react'
 
 function LandingPage() {
   return (
-    <div>LandingPage</div>
+    <h1 className="text-3xl font-bold underline">
+      LandingPage
+    </h1>
   )
 }
 
